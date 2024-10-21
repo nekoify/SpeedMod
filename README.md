@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://github.com/user-attachments/assets/ac3598f0-f694-47f6-87c0-e4c47d73d452" alt="SpeedMod" width="250" />
   <h1>Lorn's Lure SpeedMod</h1>
-  A helper for Lorn's Lure speedruns, using [BepinEx](https://github.com/BepInEx/BepInEx).
+  A helper for Lorn's Lure speedruns, using <a href="https://github.com/BepInEx/BepInEx">BepinEx</a>.
 </div>
 
 ## Video Demo
