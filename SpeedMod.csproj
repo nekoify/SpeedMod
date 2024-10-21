@@ -1,37 +1,355 @@
 <Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net472</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		<RootNamespace>SpeedMod</RootNamespace>
+		<LangVersion>default</LangVersion>
+		<IsPackable>false</IsPackable>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+		<FileVersion>1.0.0.0</FileVersion>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<AssemblyName>SpeedMod</AssemblyName>
+		<LangVersion>latest</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SpeedMod</AssemblyName>
-    <Product>My first plugin</Product>
-    <Version>1.0.0</Version>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <LangVersion>latest</LangVersion>
-    <RestoreAdditionalProjectSources>
-      https://api.nuget.org/v3/index.json;
-      https://nuget.bepinex.dev/v3/index.json;
-      https://nuget.samboy.dev/v3/index.json
-    </RestoreAdditionalProjectSources>
-    <RootNamespace>SpeedMod</RootNamespace>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
-    <PackageReference Include="BepInEx.Core" Version="5.*" />
-    <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
-    <PackageReference Include="UnityEngine.Modules" Version="2019.4.40" IncludeAssets="compile" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="UnityEngine.UI">
-			<HintPath>$(INSTALL_PATH)\LornsLure_Data\Managed\UnityEngine.UI.dll</HintPath>
+	<ItemGroup>
+		<Reference Include="AdvancedCullingSystem.Runtime">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\AdvancedCullingSystem.Runtime.dll</HintPath>
 		</Reference>
-    <Reference Include="AssemblyCsharp">
-      <HintPath>$(INSTALL_PATH)\LornsLure_Data\Managed\Assembly-CSharp.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+		<Reference Include="Assembly-CSharp-firstpass">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+		</Reference>
+		<Reference Include="Assembly-CSharp">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Assembly-CSharp.dll</HintPath>
+		</Reference>
+		<Reference Include="com.unity.multiplayer-hlapi.Runtime">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+		</Reference>
+		<Reference Include="Facepunch.Steamworks.Win64">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Facepunch.Steamworks.Win64.dll</HintPath>
+		</Reference>
+		<Reference Include="MeshCombineStudio.Runtime">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\MeshCombineStudio.Runtime.dll</HintPath>
+		</Reference>
+		<Reference Include="MeshExtension">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\MeshExtension.dll</HintPath>
+		</Reference>
+		<Reference Include="Newtonsoft.Json">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Newtonsoft.Json.dll</HintPath>
+		</Reference>
+		<Reference Include="Purchasing.Common">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Purchasing.Common.dll</HintPath>
+		</Reference>
+		<Reference Include="Rewired_Core">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Rewired_Core.dll</HintPath>
+		</Reference>
+		<Reference Include="Rewired_Windows">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Rewired_Windows.dll</HintPath>
+		</Reference>
+		<Reference Include="TextMeshProEffect">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\TextMeshProEffect.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Addressables">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Unity.Addressables.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Analytics.DataPrivacy">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Unity.Analytics.DataPrivacy.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Burst">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Unity.Burst.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Burst.Unsafe">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Unity.Burst.Unsafe.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Collections">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Unity.Collections.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.InternalAPIEngineBridge.013">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Unity.InternalAPIEngineBridge.013.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Localization">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Unity.Localization.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Mathematics">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Unity.Mathematics.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Polybrush">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Unity.Polybrush.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Postprocessing.Runtime">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Unity.Postprocessing.Runtime.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.ProBuilder">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Unity.ProBuilder.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.ProBuilder.KdTree">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Unity.ProBuilder.KdTree.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.ProBuilder.Poly2Tri">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Unity.ProBuilder.Poly2Tri.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.ProBuilder.Stl">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Unity.ProBuilder.Stl.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.ResourceManager">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Unity.ResourceManager.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.ScriptableBuildPipeline">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Unity.ScriptableBuildPipeline.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.TextMeshPro">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Timeline">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\Unity.Timeline.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AccessibilityModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.AccessibilityModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.Advertisements">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.Advertisements.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AIModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.AIModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AndroidJNIModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.AndroidJNIModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AnimationModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ARModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.ARModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AssetBundleModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AudioModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ClothModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.ClothModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ClusterInputModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.ClusterInputModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ClusterRendererModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.ClusterRendererModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.CrashReportingModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.CrashReportingModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.DirectorModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.DirectorModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.DSPGraphModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.DSPGraphModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.GameCenterModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.GameCenterModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.GridModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.GridModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.HotReloadModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.HotReloadModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ImageConversionModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.IMGUIModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.InputLegacyModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.InputModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.InputModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.JSONSerializeModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.LocalizationModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.LocalizationModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.Monetization">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.Monetization.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ParticleSystemModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.PerformanceReportingModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.PerformanceReportingModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.Physics2DModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.PhysicsModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ProfilerModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.ProfilerModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.Purchasing.AppleCore">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.Purchasing.AppleCore.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.Purchasing.AppleMacosStub">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.Purchasing.AppleMacosStub.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.Purchasing.AppleStub">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.Purchasing.AppleStub.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.Purchasing.Codeless">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.Purchasing.Codeless.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.Purchasing">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.Purchasing.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.Purchasing.SecurityCore">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.Purchasing.SecurityStub">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.Purchasing.SecurityStub.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.Purchasing.Stores">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.Purchasing.Stores.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.Purchasing.WinRTCore">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.Purchasing.WinRTCore.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.Purchasing.WinRTStub">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.Purchasing.WinRTStub.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ScreenCaptureModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.ScreenCaptureModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.SharedInternalsModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.SharedInternalsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.SpatialTracking">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.SpatialTracking.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.SpriteMaskModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.SpriteMaskModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.SpriteShapeModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.SpriteShapeModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.StreamingModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.StreamingModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.SubstanceModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.SubstanceModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.SubsystemsModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.SubsystemsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TerrainModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.TerrainModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TerrainPhysicsModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TextCoreModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.TextCoreModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TextRenderingModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TilemapModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.TilemapModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TLSModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.TLSModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UI">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.UI.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UIElementsModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UIModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UmbraModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.UmbraModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UNETModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.UNETModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityAnalyticsModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityConnectModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.UnityConnectModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityTestProtocolModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityWebRequestAudioModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityWebRequestModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityWebRequestTextureModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityWebRequestWWWModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.VehiclesModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.VehiclesModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.VFXModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.VFXModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.VideoModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.VideoModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.VRModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.VRModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.WindModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.WindModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.XR.LegacyInputHelpers">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.XRModule">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\LornsLure_Data\Managed\UnityEngine.XRModule.dll</HintPath>
+		</Reference>
+		<Reference Include="MelonLoader">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\MelonLoader\net35\MelonLoader.dll</HintPath>
+		</Reference>
+		<Reference Include="0Harmony">
+			<HintPath>X:\Steam\steamapps\common\Lorn's Lure\MelonLoader\net35\0Harmony.dll</HintPath>
+		</Reference>
 
-  <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
-  </ItemGroup>
+	</ItemGroup>
+
+	<PropertyGroup>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="Core.cs" />
+		<Compile Include="lib/*.cs"/>
+	</ItemGroup>
+	
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="COPY &quot;$(TargetPath)&quot; &quot;X:\Steam\steamapps\common\Lorn's Lure\Mods&quot;" />
+	</Target>
 </Project>

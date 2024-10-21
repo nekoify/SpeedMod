@@ -1,17 +1,14 @@
 using UnityEngine;
-using BepInEx.Logging;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using ECM.Components;
-using BepInEx.Configuration;
+using MelonLoader;
 
 
 namespace SpeedMod.Speed
 {
     public class SpeedDisplay : MonoBehaviour
     {
-        // Logging
-        internal static ManualLogSource Logger;
         // For displaying speed
         private float maxSpeed = 42.72002f;
 
@@ -20,18 +17,12 @@ namespace SpeedMod.Speed
         public Image speedBar;
         public Canvas speedCanvas;
         
-        void Awake()
+        public void Initialize()
         {
-            DontDestroyOnLoad(this.gameObject);
-        }
 
-        void Start()
-        {
             GameObject canvasObject = new GameObject("SpeedCanvas");
             speedCanvas = canvasObject.AddComponent<Canvas>();
             speedCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
-
-            DontDestroyOnLoad(canvasObject);
 
             // Speed text
             GameObject textObject = new GameObject("SpeedText");
@@ -71,13 +62,6 @@ namespace SpeedMod.Speed
 
             // Initial speed value
             speedText.text = "Speed: 0";
-            speedText.enabled = false;
-            speedBar.enabled = false;
-        }
-
-        public void Initialize(ManualLogSource logger)
-        {
-            Logger = logger;
         }
 
         /// <summary>
@@ -86,10 +70,13 @@ namespace SpeedMod.Speed
         /// <param name="speed">Player's speed.</param>
         public void DisplayBarOnGUI(float speed)
         {
-            // Update the speed bar width dynamically based on the current speed
-            float barWidth = Mathf.Clamp((speed / maxSpeed) * Screen.width, 0, Screen.width);  // Clamp width between 0 and 200
-            RectTransform barRectTransform = speedBar.GetComponent<RectTransform>();
-            barRectTransform.sizeDelta = new Vector2(barWidth, 5);
+            if (speedBar != null)
+            {
+                // Update the speed bar width dynamically based on the current speed
+                float barWidth = Mathf.Clamp((speed / maxSpeed) * Screen.width, 0, Screen.width);  // Clamp width between 0 and 200
+                RectTransform barRectTransform = speedBar.GetComponent<RectTransform>();
+                barRectTransform.sizeDelta = new Vector2(barWidth, 5);
+            }
         }
         
         /// <summary>
@@ -98,7 +85,10 @@ namespace SpeedMod.Speed
         /// <param name="speed">Player's speed.</param>
         public void DisplayTextOnGUI(float speed)
         {
-            speedText.text = $"Speed: {speed:F2}";
+            if (speedText != null)
+            {
+                speedText.text = $"Speed: {speed:F2}";
+            }
         }
     }
 }

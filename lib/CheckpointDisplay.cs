@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using BepInEx.Logging;
-using BepInEx.Configuration;
 using ECM.Components;
+using MelonLoader;
 
 namespace SpeedMod.Checkpoints
 {
@@ -11,9 +10,6 @@ namespace SpeedMod.Checkpoints
     /// </summary>
     public class CheckpointDisplay: MonoBehaviour
     {
-        // Logging
-        internal static ManualLogSource Logger;
-
         // Checkpoint & Player
         private CheckpointManager checkpointManager;
 
@@ -26,23 +22,16 @@ namespace SpeedMod.Checkpoints
         private Color setColor = Color.green;  // Green for set checkpoints
         private Color unsetColor = new Color(1f, 0.53f, 0); // Orange for unset checkpoints
 
-        void Awake()
-        {
-            DontDestroyOnLoad(this.gameObject);
-        }
         /// <summary>
         /// Initialization function.
         /// </summary>
-        /// <param name="logger">ManualLogSource.</param>
         /// <param name="cm">CheckpointManager object.</param>
-        public void Initialize(ManualLogSource logger, CheckpointManager cm)
+        public void Initialize(CheckpointManager cm)
         {
-            Logger = logger;
             checkpointManager = cm;
             // Subscribe to the OnCheckpointUpdated action
             checkpointManager.OnCheckpointUpdated += UpdateCheckpoints;
             InitializeCanvas();
-            Logger.LogInfo("CheckpointDisplay initialized.");
         }
 
         /// <summary>
@@ -54,8 +43,6 @@ namespace SpeedMod.Checkpoints
             GameObject canvasObject = new GameObject("CheckpointCanvas");
             checkpointCanvas = canvasObject.AddComponent<Canvas>();
             checkpointCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
-
-            DontDestroyOnLoad(canvasObject);
 
             // Create 3 checkpoint UI images
             checkpointImages = new Image[3];
@@ -82,7 +69,6 @@ namespace SpeedMod.Checkpoints
             }
             // Initialize the display
             UpdateCheckpoints();
-            this.checkpointCanvas.enabled = false;
         }
 
         void UpdateCheckpoints()
