@@ -8,25 +8,23 @@ using BepInEx.Configuration;
 
 namespace SpeedMod.Speed
 {
-    public class SpeedManager : MonoBehaviour
+    public class SpeedDisplay : MonoBehaviour
     {
         // Logging
         internal static ManualLogSource Logger;
         // For displaying speed
-        private CharacterMovement characterMovement; // This object stores the player's velocity
         private float maxSpeed = 42.72002f;
-        private float speed;
-        private ConfigEntry<bool> displayBar;
-        private ConfigEntry<bool> displaySpeed;
 
-        private Text speedText;
-        private Image speedBar;  // UI Image element for the speed bar
-        private Canvas speedCanvas;
+        // UI elements for the speed text & bar
+        public Text speedText;
+        public Image speedBar;
+        public Canvas speedCanvas;
         
         void Awake()
         {
             DontDestroyOnLoad(this.gameObject);
         }
+
         void Start()
         {
             GameObject canvasObject = new GameObject("SpeedCanvas");
@@ -77,50 +75,30 @@ namespace SpeedMod.Speed
             speedBar.enabled = false;
         }
 
-        public void Initialize(ManualLogSource logger,
-                               ConfigEntry<bool> dSpeed,
-                               ConfigEntry<bool> dBar)
+        public void Initialize(ManualLogSource logger)
         {
             Logger = logger;
-            displaySpeed = dSpeed;
-            displayBar = dBar;
         }
 
-        void Update()
+        /// <summary>
+        /// Updates the bar's width according to the player's speed.
+        /// </summary>
+        /// <param name="speed">Player's speed.</param>
+        public void DisplayBarOnGUI(float speed)
         {
-            if (characterMovement == null)
-            {
-                characterMovement = FindObjectOfType<CharacterMovement>();
-            }
-            else
-            {
-                // Get the player's speed
-                speed = characterMovement.velocity.magnitude;
-                
-                // Update the speed text only if it's enabled
-                if (displaySpeed.Value)
-                {
-                    speedText.text = $"Speed: {speed:F2}";
-                    speedText.enabled = true;
-                }
-                else
-                {
-                    speedText.enabled = false;
-                }
-
-                if (displayBar.Value)
-                {
-                    // Update the speed bar width dynamically based on the current speed
-                    float barWidth = Mathf.Clamp((speed / maxSpeed) * Screen.width, 0, Screen.width);  // Clamp width between 0 and 200
-                    RectTransform barRectTransform = speedBar.GetComponent<RectTransform>();
-                    barRectTransform.sizeDelta = new Vector2(barWidth, 5);
-                    speedBar.enabled = true;
-                }
-                else
-                {
-                    speedBar.enabled = false;
-                }
-            }
+            // Update the speed bar width dynamically based on the current speed
+            float barWidth = Mathf.Clamp((speed / maxSpeed) * Screen.width, 0, Screen.width);  // Clamp width between 0 and 200
+            RectTransform barRectTransform = speedBar.GetComponent<RectTransform>();
+            barRectTransform.sizeDelta = new Vector2(barWidth, 5);
+        }
+        
+        /// <summary>
+        /// Updates the speed text according to the player's speed.
+        /// </summary>
+        /// <param name="speed">Player's speed.</param>
+        public void DisplayTextOnGUI(float speed)
+        {
+            speedText.text = $"Speed: {speed:F2}";
         }
     }
 }

@@ -1,44 +1,53 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using BepInEx.Logging;
-using ECM.Components;
 using BepInEx.Configuration;
+using ECM.Components;
 
 namespace SpeedMod.Checkpoints
 {
-    public class CheckpointDisplay : MonoBehaviour
+    /// <summary>
+    /// Displays checkpoints stored in the CheckpointManager class.
+    /// </summary>
+    public class CheckpointDisplay: MonoBehaviour
     {
         // Logging
         internal static ManualLogSource Logger;
-        private CheckpointManager checkpointManager;
-        private CharacterMovement characterMovement;
-        private GameObject climber;
 
-    
+        // Checkpoint & Player
+        private CheckpointManager checkpointManager;
+
+        // Checkpoint display
+        public Canvas checkpointCanvas;
         private Image[] checkpointImages;
         public Sprite checkpointSprite;
-        private Canvas checkpointCanvas;
 
+        // Checkpoint display color
         private Color setColor = Color.green;  // Green for set checkpoints
         private Color unsetColor = new Color(1f, 0.53f, 0); // Orange for unset checkpoints
-        private ConfigEntry<bool> displayCheckpoints;
-        
+
         void Awake()
         {
             DontDestroyOnLoad(this.gameObject);
         }
-
-        public void Initialize(ManualLogSource logger, CheckpointManager cm, ConfigEntry<bool> dCheckpoints)
+        /// <summary>
+        /// Initialization function.
+        /// </summary>
+        /// <param name="logger">ManualLogSource.</param>
+        /// <param name="cm">CheckpointManager object.</param>
+        public void Initialize(ManualLogSource logger, CheckpointManager cm)
         {
             Logger = logger;
-            this.checkpointManager = cm;
+            checkpointManager = cm;
+            // Subscribe to the OnCheckpointUpdated action
             checkpointManager.OnCheckpointUpdated += UpdateCheckpoints;
-            displayCheckpoints = dCheckpoints;
             InitializeCanvas();
             Logger.LogInfo("CheckpointDisplay initialized.");
         }
 
+        /// <summary>
+        /// Initializes canvas objects to display checkpoints.
+        /// </summary>
         private void InitializeCanvas()
         {
             // Create a Canvas and set it to Screen Space - Overlay
@@ -74,53 +83,26 @@ namespace SpeedMod.Checkpoints
             // Initialize the display
             UpdateCheckpoints();
             this.checkpointCanvas.enabled = false;
-
-        }
-        void OnDestroy()
-        {
-            // Unsubscribe from the event to avoid memory leaks
-            checkpointManager.OnCheckpointUpdated -= UpdateCheckpoints;
-        }
-        void Update()
-        {
-            if (characterMovement == null)
-            {
-                characterMovement = FindObjectOfType<CharacterMovement>();
-            }
-            if (this.climber == null)
-            {
-                this.climber = GameObject.Find("Climber");
-            }
-
-            // Only call HandleInput if both references are not null
-            if (characterMovement != null && this.climber != null)
-            {
-                this.checkpointManager.HandleInput(this.climber.transform, characterMovement);
-                checkpointCanvas.enabled = displayCheckpoints.Value;
-            }
         }
 
         void UpdateCheckpoints()
         {
-            Logger.LogInfo("Updating checkpoints on GUI");
+            // Only calculate if canvas is enabled!
             if (checkpointCanvas.enabled)
             {
                 for (int i = 0; i < 3; i++)
                 {
                     if (checkpointImages[i] == null)
                     {
-                        Logger.LogError($"Checkpoint image {i + 1} is not initialized.");
                         continue;  // Skip this image if it wasn't initialized
                     }
                     // Check if the GameObject is active in the hierarchy
                     if (!checkpointImages[i].gameObject.activeInHierarchy)
                     {
-                        Logger.LogError($"Checkpoint image {i + 1} is inactive.");
                         continue;  // Skip if the GameObject is disabled
                     }
-                    bool isCheckpointSet = checkpointManager.IsCheckpointSet(i+1);
+                    bool isCheckpointSet = checkpointManager.IsCheckpointSet(i + 1);
                     checkpointImages[i].color = isCheckpointSet ? setColor : unsetColor; // Set color based on checkpoint state
-                    Logger.LogInfo($"{i}done");
                 }
             }
         }
