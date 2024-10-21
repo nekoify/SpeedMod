@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://github.com/user-attachments/assets/ac3598f0-f694-47f6-87c0-e4c47d73d452" alt="SpeedMod" width="250" />
   <h1>Lorn's Lure SpeedMod</h1>
-  A helper for Lorn's Lure speedruns, using <a href="https://github.com/BepInEx/BepInEx">BepinEx</a>.
+  A helper for Lorn's Lure speedruns, using <a href="https://github.com/LavaGang/MelonLoader">MelonLoader</a>.
 </div>
 
 ## Video Demo
@@ -16,8 +16,6 @@ The current velocity of the player can be displayed with 2 main elements:
 - **Speed Bar**: An orange bar at the top of the screen that expands according to the player's current velocity;
 - **Speed Text**: The floating value of the player's current velocity (from 0 to 42);
 
-Whether these elements are displayed can be configured in the BepinEx Configuration.
-
 ## Manual checkpoints
 
 A total of **3 manual checkpoints** can be set by the player, by default:
@@ -25,35 +23,25 @@ A total of **3 manual checkpoints** can be set by the player, by default:
 - `2`, `3` and `4` will load the first, second and third checkpoint;
 - `Z` will reset the 3 checkpoints.
 
-These key bindings can be configured in the BepinEx Configuration.
-
-# BepinEx Configuration
-
-This mod uses the BepinEx Configuration module. This allows the user to change settings
-by pressing `F1` (by default). Available settings include:
-- Presence of the **Speed Bar**;
-- Presence of the **Speed Text**;
-- Key bindings related to setting, loading and resetting checkpoints.
-
 # Installation
 
-In order to use this mod, you first need to [install BepinEx](https://docs.bepinex.dev/articles/user_guide/installation/index.html) in your Lorn's Lure install path, 
-and install the [BepinEx ConfiguratioManager](https://github.com/BepInEx/BepInEx.ConfigurationManager).  
+In order to use this mod, you first need to [install MelonLoader](https://github.com/LavaGang/MelonLoader.Installer/blob/master/README.md#how-to-install-re-install-or-update-melonloader).
 
 There are 2 methods to install the mod from here:  
 
 ### Quick way
 
-You can simply copy the `SpeedMod.dll` from the Releases page inside the `YOUR_GAME_DIR/BepinEx/plugins/` folder, and run the game!  
+You can simply copy the `SpeedMod.dll` from the Releases page inside the `YOUR_GAME_DIR/Mods/` folder, and run the game!  
 
 ### Build from source
-You can also build the project yourself by cloning the repository, and building with dontnet:  
+You can also build the project yourself by cloning the repository, and building with dotnet:  
 ```powershell
-dotnet build -p:INSTALL_PATH="C:\Path\To\LornsLureDirectory"
+dotnet build
 ```
+
 ### Troubleshooting
 
-If the mod doesn't start, you can set `HideManagerGameObject = true` in the `BepinEx/config/BepinEx.cfg` file.
+For the BepinEx release, if the mod doesn't start, you can set `HideManagerGameObject = true` in the `BepinEx/config/BepinEx.cfg` file.
 
 ## Notes
 

@@ -1,9 +1,9 @@
-using BepInEx.Logging;
 using UnityEngine;
 using ECM.Components;
 using System.Linq;
 using System;
 using System.Collections.Generic;
+using MelonLoader;
 
 namespace SpeedMod.Checkpoints{
 
@@ -12,9 +12,6 @@ namespace SpeedMod.Checkpoints{
         // Event to trigger canvas redraw
         public event Action OnCheckpointUpdated;
 
-        //Logging
-        internal static ManualLogSource Logger;
-
         // Checkpoint dictionary structure
         private Dictionary<int, Checkpoint> checkpoints;
 
@@ -22,10 +19,9 @@ namespace SpeedMod.Checkpoints{
         private static List<bool> lastCheckpointState;
         private static List<bool> currentCheckpointState;
 
-        public CheckpointManager(ManualLogSource logger)
+        public CheckpointManager()
         {
-            Logger = logger;
-            Logger.LogDebug("Instanciating CheckpointManager");
+            // Melon<SpeedMod>.Logger.Msg("Instanciating CheckpointManager");
 
             this.checkpoints = new Dictionary<int, Checkpoint>();
 
@@ -60,7 +56,7 @@ namespace SpeedMod.Checkpoints{
         /// <param name="checkpointNumber">Index of the checkpoint.</param>
         /// <param name="climberTransform">Transform of the player, contains rotation & position</param>
         public void SetCheckpoint(int checkpointNumber, Transform climberTransform){
-            Logger.LogInfo($"Setting checkpoint {checkpointNumber}");
+            // Melon<SpeedMod>.Logger.Msg($"Setting checkpoint {checkpointNumber}");
 
             Checkpoint checkpoint    = this.checkpoints[checkpointNumber];
 
@@ -83,7 +79,7 @@ namespace SpeedMod.Checkpoints{
         /// <param name="climberTransform">Transform of the player, contains rotation & position.</param>
         /// <param name="characterMovement">Movement of the climber.</param>
         public void LoadCheckpoint(int checkpointNumber, Transform climberTransform, CharacterMovement characterMovement){
-            Logger.LogInfo($"Loading checkpoint {checkpointNumber}");
+            // Melon<SpeedMod>.Logger.Msg($"Loading checkpoint {checkpointNumber}");
 
             if (IsCheckpointSet(checkpointNumber))
             {
@@ -128,7 +124,7 @@ namespace SpeedMod.Checkpoints{
                 OnCheckpointUpdated.Invoke();  // Notify listeners that checkpoints were reset
             }
 
-            Logger.LogInfo("All checkpoints have been reset.");
+            // Melon<SpeedMod>.Logger.Msg("All checkpoints have been reset.");
         }
     }
 }
