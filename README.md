@@ -51,6 +51,9 @@ You can also build the project yourself by cloning the repository, and building 
 ```powershell
 dotnet build -p:INSTALL_PATH="C:\Path\To\LornsLureDirectory"
 ```
+### Troubleshooting
+
+If the mod doesn't start, you can set `HideManagerGameObject = true` in the `BepinEx/config/BepinEx.cfg` file.
 
 ## Notes
 
