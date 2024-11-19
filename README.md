@@ -18,9 +18,10 @@ The current velocity of the player can be displayed with 2 main elements:
 
 ## Manual checkpoints
 
-A total of **3 manual checkpoints** can be set by the player, by default:
-- `F2`, `F3` and `F4` will set the first, second and third checkpoint;
-- `2`, `3` and `4` will load the first, second and third checkpoint;
+Unlimited checkpoints can be set by the player, by default:
+- `1` will create a checkpoint;
+- `2` will load the checkpoint;
+- `3` will remove the current checkpoint, allowing you to go back to the previous checkpoint;
 - `Z` will reset the 3 checkpoints.
 
 # Installation
