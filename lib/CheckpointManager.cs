@@ -63,8 +63,8 @@ namespace SpeedMod.Checkpoints{
             if (checkpointIndex > 0)
             {
                 checkpoints.Remove(checkpointIndex);
+                checkpointIndex--;
             }
-            checkpointIndex--;
         }
         
         /// <summary>
