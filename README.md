@@ -22,7 +22,7 @@ Unlimited checkpoints can be set by the player, by default:
 - `1` will create a checkpoint;
 - `2` will load the checkpoint;
 - `3` will remove the current checkpoint, allowing you to go back to the previous checkpoint;
-- `Z` will reset the 3 checkpoints.
+- `Z` will clear all checkpoints.
 
 # Installation
 
